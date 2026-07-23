@@ -9,7 +9,7 @@ description: Return this week's Torah portion (parsha) — name in Hebrew and tr
 
 1. Default to the current week (use the user's timezone if available from `onboard` config; otherwise system time).
 
-2. Call `mcp__jungle-shared__hebcal__torah-portion` to get the parsha name and verse range. In the diaspora vs. Israel, parshiyot can differ — pass the user's location or `il=true/false` based on saved config.
+2. Call `mcp__gateway__hebcal__torah-portion` to get the parsha name and verse range. In the diaspora vs. Israel, parshiyot can differ — pass the user's location or `il=true/false` based on saved config.
 
 3. Output:
    - **Parsha name** (Hebrew + transliteration)

@@ -9,7 +9,7 @@ description: Return today's Daf Yomi (or a specified date's daf) — masechet, d
 
 1. **Resolve date.** Default today, in the user's timezone if `onboard` config exists.
 
-2. **Call** `mcp__jungle-shared__hebcal__daf-yomi` with the date.
+2. **Call** `mcp__gateway__hebcal__daf-yomi` with the date.
 
 3. **Output:**
    - Masechet + daf (e.g. "Bava Metzia 47")

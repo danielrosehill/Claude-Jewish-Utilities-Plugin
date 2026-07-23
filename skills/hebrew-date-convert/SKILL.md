@@ -25,8 +25,8 @@ Detect direction from input:
    If no time is given, assume daytime (Hebrew date = same calendar day).
 
 3. **Convert.** Preferred backend: hebcal MCP tools
-   - `mcp__jungle-shared__hebcal__convert-gregorian-to-hebrew`
-   - `mcp__jungle-shared__hebcal__convert-hebrew-to-gregorian`
+   - `mcp__gateway__hebcal__convert-gregorian-to-hebrew`
+   - `mcp__gateway__hebcal__convert-hebrew-to-gregorian`
 
    **Offline fallback:** if no MCP / network, use the `pyluach` Python library (https://github.com/simlist/pyluach):
 

@@ -23,10 +23,10 @@ Return candle-lighting and havdalah times for the user's saved location.
    - `zmanim_get_shabbat_times` from the zmanim MCP server (https://github.com/ariroffe72/zmanim-mcp-server). Pass lat/lon/timezone and `candle_lighting_offset` from config.
 
    Fallback:
-   - `mcp__jungle-shared__hebcal__shabbat-times` — hebcal MCP.
+   - `mcp__gateway__hebcal__shabbat-times` — hebcal MCP.
    - `https://www.hebcal.com/shabbat?cfg=json&latitude=...&longitude=...&tzid=...` REST endpoint.
 
-4. **Get the parsha** via `mcp__jungle-shared__hebcal__torah-portion` for the same week and include it in the output.
+4. **Get the parsha** via `mcp__gateway__hebcal__torah-portion` for the same week and include it in the output.
 
 5. **Format the response.** Show:
    - Parsha name (Hebrew + transliteration)
