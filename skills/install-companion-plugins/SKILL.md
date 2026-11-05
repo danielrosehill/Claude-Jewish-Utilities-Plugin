@@ -10,7 +10,7 @@ description: Offer to install Claude Code plugins that complement jewish-utiliti
 ### jewish-texts-reference (recommended)
 
 - **Repo**: https://github.com/danielrosehill/Jewish-Texts-Reference-Plugin
-- **What it does**: Sefaria MCP integration for Tanakh, Talmud, Mishnah, Halakha, Kabbalah, commentary, dictionaries, topics. Plus nikkud (Hebrew vowelisation) add/strip skills via Dicta nakdan, removenikud APIs, and offline regex fallbacks.
+- **What it does**: Sefaria lookups through its public REST API for Tanakh, Talmud, Mishnah, Halakha, Kabbalah, commentary, dictionaries, topics. Plus nikkud (Hebrew vowelisation) add/strip skills via Dicta nakdan, removenikud APIs, and offline regex fallbacks.
 - **Why install alongside jewish-utilities**: skills here (parsha-this-week, daf-yomi-today) link to Sefaria; the companion plugin lets Claude pull the *full text* of those references inline rather than just linking out.
 - **Install command**:
 

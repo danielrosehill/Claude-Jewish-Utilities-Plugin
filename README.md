@@ -32,11 +32,6 @@ to set your location (required for `shabbat-times` and `zmanim`).
 
 ## Dependencies
 
-- **[zmanim-mcp-server](https://github.com/ariroffe72/zmanim-mcp-server)** (recommended for `zmanim` and `shabbat-times`) — Python MCP using python-zmanim / KosherJava with NOAA-based astronomical calculations and GR"A + MG"A opinion support.
-
-  ```bash
-  claude mcp add zmanim -- uvx zmanim-mcp-server
-  ```
 
 - **Hebcal REST API** — calendar, holiday, parsha, daf-yomi and date-conversion endpoints (https://www.hebcal.com/home/developer-apis). Public, no key; the skills call it with `curl`.
 - **`jewish-texts-reference` plugin** (optional, recommended) — inline Tanakh/Talmud/Mishnah text via Sefaria, instead of link-outs.

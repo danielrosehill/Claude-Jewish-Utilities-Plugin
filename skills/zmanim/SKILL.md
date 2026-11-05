@@ -19,25 +19,17 @@ Return halachic times for a given date and the user's saved location.
 
 2. **Resolve target date.** Default to today (in the user's timezone). Accept Gregorian or Hebrew date input.
 
-3. **Call the zmanim MCP server.** Preferred backend is `zmanim-mcp-server` (https://github.com/ariroffe72/zmanim-mcp-server) — it uses python-zmanim (a port of KosherJava) with NOAA-based astronomical calculations and supports GR"A and MG"A opinions.
-
-   Tools to use:
-   - `zmanim_get_daily_times` — comprehensive daily set (preferred default)
-   - `zmanim_get_sunrise_sunset`
-   - `zmanim_get_shema_times` — GR"A and MG"A
-   - `zmanim_get_tefila_times` — GR"A and MG"A
-   - `zmanim_get_mincha_times` — Mincha Gedola, Mincha Ketana, Plag HaMincha
-   - `zmanim_get_shabbat_times` — candle-lighting, havdalah
-
-   Pass `latitude`, `longitude`, `timezone` from config. For shabbat times, pass `candle_lighting_offset` from config (default 18, Jerusalem 40).
-
-   **If the zmanim MCP server isn't installed**, tell the user how to add it:
+3. **Call the public Hebcal zmanim API** (no key, no MCP):
 
    ```bash
-   claude mcp add zmanim -- uvx zmanim-mcp-server
+   curl -s 'https://www.hebcal.com/zmanim?cfg=json&geonameid=281184&date=YYYY-MM-DD'
    ```
 
-4. **Fallback** — if the zmanim MCP isn't available and the user doesn't want to install it, use the hebcal REST endpoint: `https://www.hebcal.com/zmanim?cfg=json&latitude=...&longitude=...&tzid=...&date=YYYY-MM-DD`. Do **not** silently approximate.
+   Use `geonameid` where known (Jerusalem is 281184), otherwise `latitude`, `longitude` and `tzid` from config. `times` holds GR"A and
+   MG"A values: `alotHaShachar`, `sunrise`, `sofZmanShma`, `sofZmanShmaMGA`, `sofZmanTfilla`, `sofZmanTfillaMGA`, `chatzot`,
+   `minchaGedola`, `minchaKetana`, `plagHaMincha`, `sunset` and more. For candle lighting and havdalah use `shabbat-times`.
+
+4. **If the API fails,** report the error. Do **not** approximate times.
 
 5. **Format the response** as a table with timezone shown next to times. Group by category (dawn, morning prayer, midday, afternoon, sunset/night). Show GR"A and MG"A side-by-side where both apply.
 
@@ -45,4 +37,4 @@ Return halachic times for a given date and the user's saved location.
 
 - "Use 72-minute opinion only" — filter the output.
 - "Compare cities" — accept ad-hoc lat/lon for a one-off comparison without overwriting saved config.
-- "Output JSON" — request the MCP's JSON format for further processing.
+- "Output JSON" — return the API's `times` object for further processing.
