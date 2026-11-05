@@ -24,9 +24,9 @@ Detect direction from input:
 
    If no time is given, assume daytime (Hebrew date = same calendar day).
 
-3. **Convert.** Preferred backend: hebcal MCP tools
-   - `mcp__gateway__hebcal__convert-gregorian-to-hebrew`
-   - `mcp__gateway__hebcal__convert-hebrew-to-gregorian`
+3. **Convert.** Preferred backend: the public Hebcal converter API (no key):
+   - Gregorian to Hebrew: `curl -s 'https://www.hebcal.com/converter?cfg=json&date=YYYY-MM-DD&g2h=1&strict=1'` (add `gs=on` if after sunset). Returns `hy`, `hm`, `hd`, `hebrew` and `events`.
+   - Hebrew to Gregorian: `curl -s 'https://www.hebcal.com/converter?cfg=json&hy=5787&hm=Kislev&hd=1&h2g=1'`. Returns `gy`, `gm`, `gd`.
 
    **Offline fallback:** if no MCP / network, use the `pyluach` Python library (https://github.com/simlist/pyluach):
 

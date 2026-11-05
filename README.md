@@ -1,6 +1,6 @@
 # Jewish-Utilities
 
-Miscellaneous utility skills for Jewish users — shabbat times, zmanim, parsha-of-the-week, hebrew date conversion, upcoming holidays, and daf yomi. Wraps the [hebcal MCP server](https://www.hebcal.com/) and complements [`jewish-texts-reference`](https://github.com/danielrosehill/Jewish-Texts-Reference-Plugin) for full-text Sefaria lookups.
+Miscellaneous utility skills for Jewish users — shabbat times, zmanim, parsha-of-the-week, hebrew date conversion, upcoming holidays, and daf yomi. Calls the public [Hebcal REST API](https://www.hebcal.com/home/developer-apis) (no key, no MCP) and complements [`jewish-texts-reference`](https://github.com/danielrosehill/Jewish-Texts-Reference-Plugin) for full-text Sefaria lookups.
 
 ## Skills
 
@@ -38,14 +38,14 @@ to set your location (required for `shabbat-times` and `zmanim`).
   claude mcp add zmanim -- uvx zmanim-mcp-server
   ```
 
-- **hebcal MCP server** — calendar/holiday/parsha/daf-yomi/date-conversion tools (`mcp__jungle-shared__hebcal__*`). Fallback: the public hebcal REST API (https://www.hebcal.com/home/195/shabbat-times-rest-api).
+- **Hebcal REST API** — calendar, holiday, parsha, daf-yomi and date-conversion endpoints (https://www.hebcal.com/home/developer-apis). Public, no key; the skills call it with `curl`.
 - **`jewish-texts-reference` plugin** (optional, recommended) — inline Tanakh/Talmud/Mishnah text via Sefaria, instead of link-outs.
 
 ## Related tools & references
 
 These aren't required dependencies — they're tools the skills reference, recommend, or could be extended with:
 
-- [hebcal/hebcal](https://github.com/hebcal/hebcal) — the upstream open-source Hebrew calendar engine that backs the hebcal MCP.
+- [hebcal/hebcal](https://github.com/hebcal/hebcal) — the upstream open-source Hebrew calendar engine that backs the Hebcal API.
 - [simlist/pyluach](https://github.com/simlist/pyluach) — Python Hebrew-calendar arithmetic; used as offline fallback in `hebrew-date-convert`.
 - [Shmulik-Kravitz/jewish-date](https://github.com/Shmulik-Kravitz/jewish-date) — TypeScript Hebrew-date library; recommended when the user is building a JS/TS app.
 - [torahcalc/torahcalc](https://github.com/torahcalc/torahcalc) — Torah calculator (gematria, biblical units, dates). Useful reference; could be wrapped in a future `gematria` skill.

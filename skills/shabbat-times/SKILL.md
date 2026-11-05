@@ -1,6 +1,6 @@
 ---
 name: shabbat-times
-description: Get candle-lighting and havdalah times for the upcoming (or a specified) shabbat. Uses the location saved by the `onboard` skill. Calls the zmanim MCP server (preferred) or hebcal MCP/REST as fallback.
+description: Get candle-lighting and havdalah times for the upcoming (or a specified) shabbat. Uses the location saved by the `onboard` skill. Calls the public Hebcal REST API (no key).
 ---
 
 # Shabbat Times
@@ -19,14 +19,15 @@ Return candle-lighting and havdalah times for the user's saved location.
 
 2. **Resolve target shabbat.** Default to the upcoming one. If the user specifies a date, use that week.
 
-3. **Call backend.** Preferred:
-   - `zmanim_get_shabbat_times` from the zmanim MCP server (https://github.com/ariroffe72/zmanim-mcp-server). Pass lat/lon/timezone and `candle_lighting_offset` from config.
+3. **Call the Hebcal REST API** (public, no key):
 
-   Fallback:
-   - `mcp__gateway__hebcal__shabbat-times` — hebcal MCP.
-   - `https://www.hebcal.com/shabbat?cfg=json&latitude=...&longitude=...&tzid=...` REST endpoint.
+   ```bash
+   curl -s 'https://www.hebcal.com/shabbat?cfg=json&M=on&latitude=LAT&longitude=LON&tzid=TZ&b=OFFSET&dt=YYYY-MM-DD'
+   ```
 
-4. **Get the parsha** via `mcp__gateway__hebcal__torah-portion` for the same week and include it in the output.
+   Use `geonameid=<id>` instead of lat/lon/tzid where known (Jerusalem is 281184). `b` is the candle-lighting offset in minutes from config (omit for Hebcal's default of 18). `dt` is optional and selects another week. `items` holds `category: "candles"`, `"parashat"` and `"havdalah"` entries.
+
+4. **Get the parsha** from the same response (`category: "parashat"`) and include it in the output.
 
 5. **Format the response.** Show:
    - Parsha name (Hebrew + transliteration)

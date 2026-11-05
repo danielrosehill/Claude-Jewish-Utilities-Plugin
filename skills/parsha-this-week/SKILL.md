@@ -9,7 +9,8 @@ description: Return this week's Torah portion (parsha) — name in Hebrew and tr
 
 1. Default to the current week (use the user's timezone if available from `onboard` config; otherwise system time).
 
-2. Call `mcp__gateway__hebcal__torah-portion` to get the parsha name and verse range. In the diaspora vs. Israel, parshiyot can differ — pass the user's location or `il=true/false` based on saved config.
+2. Fetch the parsha from the public Hebcal API (no key):
+   `curl -s 'https://www.hebcal.com/hebcal?v=1&cfg=json&s=on&start=YYYY-MM-DD&end=YYYY-MM-DD'` with the Saturday of the target week as both dates. Items with `category: "parashat"` give `title`, `hebrew` and `leyning` (verse ranges per aliyah; `leyning.torah` is the full range when present). In the diaspora vs. Israel, parshiyot can differ — add `i=on` for Israel based on saved config.
 
 3. Output:
    - **Parsha name** (Hebrew + transliteration)

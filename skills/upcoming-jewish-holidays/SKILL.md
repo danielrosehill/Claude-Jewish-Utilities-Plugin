@@ -15,7 +15,8 @@ description: List upcoming Jewish holidays — major yom tov, minor holidays, fa
 
 2. **Resolve `il` flag.** Read `onboard` config. If `location.city` is in Israel (or user explicitly sets), pass `il=true` to hebcal — affects second-day yom tov.
 
-3. **Call** `mcp__gateway__hebcal__jewish-holidays-year` (or the appropriate hebcal endpoint covering the requested span; chain calls if the span crosses a Hebrew year).
+3. **Call** the public Hebcal API (no key), with `start`/`end` set to the span:
+   `curl -s 'https://www.hebcal.com/hebcal?v=1&cfg=json&maj=on&min=on&mod=on&nx=on&mf=on&ss=on&start=YYYY-MM-DD&end=YYYY-MM-DD'` and add `i=on` for Israel. Each item has `title`, `date`, `hdate`, `hebrew` and `category`. Chain calls if the span is over a year.
 
 4. **Filter** by category if requested:
    - Major (yom tov): Pesach, Shavuot, Rosh Hashanah, Yom Kippur, Sukkot, Shemini Atzeret/Simchat Torah

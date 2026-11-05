@@ -9,7 +9,8 @@ description: Return today's Daf Yomi (or a specified date's daf) — masechet, d
 
 1. **Resolve date.** Default today, in the user's timezone if `onboard` config exists.
 
-2. **Call** `mcp__gateway__hebcal__daf-yomi` with the date.
+2. **Call** the public Hebcal API (no key) with the date as both `start` and `end`:
+   `curl -s 'https://www.hebcal.com/hebcal?v=1&cfg=json&F=on&start=YYYY-MM-DD&end=YYYY-MM-DD'`. The item with `category: "dafyomi"` has `title` (e.g. "Bechorot 48"), `hebrew` and a Sefaria `link`.
 
 3. **Output:**
    - Masechet + daf (e.g. "Bava Metzia 47")
