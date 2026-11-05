@@ -1,7 +1,7 @@
 {
   "name": "jewish-utilities",
   "version": "1.0.0",
-  "description": "Miscellaneous utility skills for Jewish users — shabbat times, zmanim, parsha, hebrew date conversion, upcoming holidays, and daf yomi. Wraps the hebcal MCP server. Onboarding captures the user's location for location-dependent skills.",
+  "description": "Miscellaneous utility skills for Jewish users — shabbat times, zmanim, parsha, hebrew date conversion, upcoming holidays, and daf yomi. Calls the public Hebcal REST API. Onboarding captures the user's location for location-dependent skills.",
   "author": {
     "name": "Daniel Rosehill",
     "url": "https://github.com/danielrosehill"
